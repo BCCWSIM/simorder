@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>CW Sim Booking</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+     <div class="logo-img-title-container">
+      <div class="logo-container">
+        <img src="https://lh3.googleusercontent.com/d/1pycErU1dgRNfZEFXBJToLkj5mVqSkFjb" class="logo1">
+        <img src="https://lh3.googleusercontent.com/d/19bi1iNE8JYD1kVJ3nGH0YevbPh-sdQ9b" class="logo1">
+      </div>
+      <span class="logo-text">Simulation Program</span>
+    </div>
+    <div class="input-details">
+      <input type="text" id="titleInput" placeholder="Session Title">
+      <input type="datetime-local" id="dateTimeStartInput">
+      <input type="number" id="durationInput" placeholder="hours">
+      <input type="datetime-local" id="dateTimeEndInput">
+      <input type="text" id="referenceInput" placeholder="Reference">
+    </div>
+    <div class="checkbox-group">
+      <input type="checkbox" id="checkbox1">
+      <label for="checkbox1">Checkbox 1</label>
+      <!-- Repeat for other checkboxes -->
+    </div>
+
+  </header>  
+  <div id="galleryContainer" class="rounded-container"></div>
+    <div id="searchAndFilterContainer">
+      <input type="text" id="myInput" onkeyup="liveSearch()" placeholder="Search...">
+      <div id="galleryContainer"></div>
+      <div id="csvGallery"></div>
+  </div>
+  
+    <div id="selectContainer"></div>
+    <div id="uniqueCode" style="display: none;"></div>
+    
+    
+    
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.1.0/papaparse.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.13/jspdf.plugin.autotable.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
