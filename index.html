@@ -43,14 +43,27 @@
     
     <!-- Add the cart HTML here -->
     <div id="cart" class="cart">
+      <div id="cartDiv" class="cart-div">
         <button id="cartButton" class="cart-button">
             <span class="cart-icon">🛒</span>
-            <span id="cartCount" class="cart-count">0</span>
+            <span id="cartCount" class="cart-count">1</span>
         </button>
+    </div>
+    
         <div id="cartItems" class="cart-items">
             <!-- Items will be added here dynamically -->
         </div>
     </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+  $("#cartButton").click(function(){
+    $(".cart").toggleClass("active");
+  });
+});
+</script>
+
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.1.0/papaparse.min.js"></script>
