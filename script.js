@@ -124,7 +124,6 @@ function displayGallery() {
             gallery.appendChild(div);
         }
     }
-    updateGallerySelections();
 }
 
 // Create option for dropdown
@@ -240,6 +239,8 @@ function createCard(dataRowItems) {
 }
 
 function toggleSelection(element, itemKey) {
+    const cart = document.getElementById('cart'); // assuming 'cart' is the id of your cart element
+
     if (selectedItems.has(itemKey)) {
         selectedItems.delete(itemKey);
         element.classList.remove('selected');
@@ -256,34 +257,15 @@ function toggleSelection(element, itemKey) {
         quantityInput.style.display = 'none'; // Hide the input
     }
 
+    // Show or hide cart
+    if (selectedItems.size > 0) {
+        cart.style.display = 'block'; // Show the cart
+    } else {
+        cart.style.display = 'none'; // Hide the cart
+    }
+
     updateClearSelectionButton();
     updateTableSelections(); // Add this line
-}
-
-function updateClearSelectionButton() {
-    // Your implementation here
-}
-
-function updateTableSelections() {
-    // Your implementation here
-}
-
-function updateGallerySelections() {
-    // Your implementation here
-}
-
-function createContentDiv(dataRowItems) {
-    const contentDiv = document.createElement('div');
-    dataRowItems.forEach((cell, cellIndex) => {
-        if (cellIndex === 0) {
-            const img = createImage(cell);
-            contentDiv.appendChild(img);
-        } else {
-            const p = createParagraph(cell, cellIndex, dataRowItems);
-            contentDiv.appendChild(p);
-        }
-    });
-    return contentDiv;
 }
 
 function createImage(cell) {
@@ -336,13 +318,48 @@ cart.style.overflowY = 'auto';
 cart.style.display = 'none'; // Hide the cart by default
 document.body.appendChild(cart);
 
+// Add an event listener to the cart
+cart.addEventListener('click', function() {
+    if (cart.style.display === 'none') {
+        cart.style.display = 'block'; // Show the cart
+    } else {
+        cart.style.display = 'none'; // Hide the cart
+    }
+});
+
+let cartItems = []; // Define your cart items as an array
+
+// Initialize the count of selected items
+let selectedItemsCount = 0;
+
+// Function to update the cart count
+function updateCartCount() {
+    const cartCountElement = document.getElementById('cartCount');
+    cartCountElement.textContent = selectedItemsCount;
+}
+
 function toggleSelection(element, itemKey) {
+    const cart = document.getElementById('cart'); // assuming 'cart' is the id of your cart element
+    const cartItemsElement = document.getElementById('cartItems'); // get the cart items container
+
     if (selectedItems.has(itemKey)) {
         selectedItems.delete(itemKey);
         element.classList.remove('selected');
+        selectedItemsCount--; // decrement the count
+
+        // Remove item from cart
+        const itemElement = document.getElementById('cart-item-' + itemKey);
+        cartItemsElement.removeChild(itemElement);
     } else {
         selectedItems.add(itemKey);
         element.classList.add('selected');
+        selectedItemsCount++; // increment the count
+
+        // Add item to cart
+        const itemElement = document.createElement('div');
+        itemElement.id = 'cart-item-' + itemKey;
+        itemElement.textContent = itemKey; // replace this with the actual item details
+        cartItemsElement.appendChild(itemElement);
     }
 
     // Show or hide quantity input
@@ -353,28 +370,56 @@ function toggleSelection(element, itemKey) {
         quantityInput.style.display = 'none'; // Hide the input
     }
 
-    updateCart(); // Update the cart whenever an item is selected or deselected
+    // Show or hide cart
+    if (selectedItems.size > 0) {
+        cart.style.display = 'block'; // Show the cart
+    } else {
+        cart.style.display = 'none'; // Hide the cart
+    }
+
+    updateCartCount(); // Update the cart count whenever an item is selected or deselected
+}
+
+
+
+
+function updateCart() {
+    const cartElement = document.getElementById('cartItems');
+    cartElement.innerHTML = ''; // Clear the cart
+
+    cartItems.forEach(item => {
+        const itemElement = document.createElement('div');
+        itemElement.textContent = `Item: ${item.key}, Quantity: ${item.quantity}`;
+        const removeButton = document.createElement('button');
+        removeButton.textContent = 'Remove';
+        removeButton.addEventListener('click', () => {
+            cartItems = cartItems.filter(cartItem => cartItem.key !== item.key); // Remove item from cart
+            updateCart(); // Update the cart
+        });
+        itemElement.appendChild(removeButton);
+        cartElement.appendChild(itemElement);
+    });
 }
 
 
 document.getElementById('cartButton').addEventListener('click', function() {
     const cart = document.getElementById('cart');
-    const cartItems = document.getElementById('cartItems');
-    if (cart.style.width === '60px') {
-        cart.style.width = '200px';
-        cartItems.style.display = 'block';
+    if (cart.style.display === 'none') {
+        cart.style.display = 'block';
+        cart.style.right = '0px';
     } else {
-        cart.style.width = '60px';
-        cartItems.style.display = 'none';
+        cart.style.display = 'none';
+        cart.style.right = '-200px';
     }
 });
 
+
 // Add items to the cart dynamically
 function addToCart(item) {
-    const cartItems = document.getElementById('cartItems');
+    const cartItemsElement = document.getElementById('cartItems');
     const cartCount = document.getElementById('cartCount');
     const itemElement = document.createElement('div');
     itemElement.textContent = item;
-    cartItems.appendChild(itemElement);
-    cartCount.textContent = cartItems.children.length;
+    cartItemsElement.appendChild(itemElement);
+    cartCount.textContent = cartItemsElement.children.length;
 }
