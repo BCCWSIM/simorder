@@ -3,10 +3,15 @@ body, html {
     font-family: "Inconsolata", "Arial", sans-serif;
 }
 
-.bgimg, .container, .logo-img-title-container, .input-details, .checkbox-group label, .logo-container {
+.bgimg, .container, .logo-img-title-container, .input-details, .checkbox-group label, .logo-container, button {
     display: flex;
     justify-content: center;
-    align-items: flex-start;
+    padding: 0.5em 1em;
+    margin: 0.5em;
+    cursor: pointer;
+    border: 1px solid #999999;
+    border-radius: 5px;
+    width: fit-content;
 }
 
 .bgimg {
@@ -19,25 +24,12 @@ body, html {
     max-height: calc(100% - 50px);
 }
 
-.logo-img-title-container, .input-details {
+.logo-img-title-container, .input-details, .checkbox-group label, .logo-container {
     flex-direction: column; 
-}
-.logo-text {
-    align-self: center;
 }
 
 .checkbox-group input[type="checkbox"] {
     display: none;
-}
-
-.checkbox-group label {
-    flex-direction: column;
-    padding: 0.5em 1em;
-    margin: 0.5em;
-    cursor: pointer;
-    border: 1px solid #999999;
-    border-radius: 5px;
-    width: fit-content;
 }
 
 .checkbox-group input[type="checkbox"]:checked + label {
@@ -46,13 +38,7 @@ body, html {
     border-color: #007bff;
 }
 
-.logo-container {
-    flex-direction: row;
-    padding: 0;
-    align-self: center;
-}
-
-.logo1, .logo2 {
+.logo1, .logo2, .thumbnail {
     flex: 1;
     max-width: 100%;
     max-height: 100px;
@@ -65,11 +51,14 @@ body, html {
     object-fit: contain;
 }
 
+.thumbnail {
+    margin: 0px;
+}
+
 .text-container {
     text-align: center;
     width: 100%;
     max-width: 1000px;
-    align-self: center;
 }
 
 .text-container span {
@@ -87,10 +76,9 @@ body {
 
 .thumbnail {
     width: 100%;
-    height: 60%;
+    height: 50%;
     max-height: 400px;
     border-radius: 15px;
-    align: center;
     z-index: 999;
     object-fit: scale-down;
     padding-bottom: 10px;
@@ -109,7 +97,6 @@ input[type=number] {
     margin: 8px 0;
     box-sizing: border-box;
     border: 3px solid #ccc;
-    -webkit-transition: 0.5s;
     transition: 0.5s;
     outline: none;
     text-align: center;
@@ -126,35 +113,12 @@ label {
     margin-top: 20px;
 }
 
-button {
-    font-weight: bold;
-    background-color: #add8e6;
-    border: none;
-    color: black;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;
-    border-radius: 12px;
-}
-
-button:hover {
-    background-color: #87ceeb;
-}
-
-button:active {
-    outline: none;
-    box-shadow: 0 0 0 2px #000;
-}
-
 #csvGallery, .csvGallery {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
 }
+
 .card {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     margin: 10px;
@@ -164,15 +128,14 @@ button:active {
     align-items: center;
     height: auto;
     max-height: 450px;
-    flex: 1 1 190px; /* This allows the cards to grow and shrink as needed, but they'll try to take up 180px */
-    max-width: calc(20% - 20px); /* This ensures that a single card doesn't stretch to fill the entire row */
-    position: relative; /* Add this line */
+    flex: 1 1 190px;
+    max-width: calc(20% - 20px);
+    position: relative;
 }
-
 
 @media (max-width: 600px) {
     .card {
-        max-width: 100%; /* This will make the cards take up the full width of the container when the screen size is 600px or less */
+        max-width: 100%;
     }
 }
 
@@ -184,29 +147,13 @@ button:active {
     padding: 5px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between; /* This will push the elements to the top and bottom */
-    height: 100%; /* This will make sure the div takes full height of the card */
-}
-
-.card > div > .sku,
-.card > div > .title,
-.card > div > .quantity-input {
-    order: 1; /* This will make sure these elements stay at the top */
+    justify-content: space-between;
+    height: 100%;
     text-align: center;
 }
+
 .quantity-input {
     background-color: white;
-}
-
-.card > div > .quantity-container {
-    align-self: center;
-    order: 2; /* This will push the quantity container to the bottom */
-    margin-top: auto; /* This will push the quantity container to the bottom */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    font-size: 0.8em;
 }
 
 .quantity-container {
@@ -221,39 +168,55 @@ button:active {
 #categorySelect, #subcategorySelect {
     position: relative;
     z-index: 1;
-    font-size: larger; /* Makes the text larger */
-    width: 100%; /* Makes the element wider */
+    font-size: larger;
+    width: 100%;
     max-width: 375px;
     min-height: 15px;
-    text-align: center; /* Centers the text */
-}
-#categorySelect, #subcategorySelect {
+    text-align: center;
     margin-bottom: 10px;
 }
 
-.card > div > div > .title {
-    order: 1; /* This will make sure the title stays at the top */
-}
-
-.card > div > div > .quantity-container {
-    order: 2; /* This will push the quantity container below the title */
-}
-
-.card > div > div > .quantity-input {
-    order: 3; /* This will push the quantity input below the quantity container */
-}
-
-.card > div > div > .sku {
-    order: 4; /* This will push the SKU to the bottom */
-}
 .cart {
     position: fixed;
-    right: 20px;
-    bottom: 20px;
-    width: 60px;
+    right: -425px;
+    top: 20px;
+    width: 500px;
     height: 60px;
-    transition: width 0.3s ease;
-    overflow: hidden;
+    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    display: none;
+    z-index: 1000;
+    background-color: #3496a0;
+    will-change: transform; /* Add this line */
+}
+
+.cart:hover,
+.cart:active {
+    right: 0;
+    height: 450px;
+    transition: all 0.5s ease; /* Add this line */
+}
+
+.cart-items {
+    position: absolute;
+    top: 60px;
+    width: 100%;
+    background-color: #f8f9fa;
+    padding: 20px;
+    box-sizing: border-box;
+    display: none;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+    transition: height 0.5s ease-in-out; /* Add this line */
+}
+
+.cart:hover .cart-items,
+.cart:active .cart-items {
+    display: block; /* or 'flex' if you're using a flex layout for the cart items */
+}
+
+.cart.active {
+    right: 0;
+    height: 450px;
 }
 
 .cart-button {
@@ -262,10 +225,11 @@ button:active {
     border-radius: 50%;
     background-color: #f8f9fa;
     border: none;
-    cursor: pointer;
     position: relative;
     z-index: 1;
+    pointer-events: none; /* Add this line */
 }
+
 
 .cart-icon {
     font-size: 24px;
@@ -290,4 +254,6 @@ button:active {
     padding: 20px;
     box-sizing: border-box;
     display: none;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
 }
