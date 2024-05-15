@@ -6,7 +6,7 @@ body, html {
 }
 
 .container, .logo-img-title-container, .input-details, .checkbox-group label, .logo-container, button {
-    display: flex;
+    display: inherit;
     justify-content: center;
     border: 1px solid #999999;
     border-radius: 5px;
