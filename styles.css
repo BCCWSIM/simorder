@@ -1,10 +1,11 @@
 body, html {
     height: 100%;
     font-family: "Inconsolata", "Arial", sans-serif;
+    text-align: center;
 }
 
 .bgimg, .container, .logo-img-title-container, .input-details, .checkbox-group label, .logo-container, button {
-    display: flex;
+    display: inherit;
     justify-content: center;
     padding: 0.5em 1em;
     margin: 0.5em;
@@ -229,6 +230,7 @@ label {
 
 .cart-icon {
     font-size: 24px;
+    max-height: 75px;
 }
 
 .cart-count {
@@ -252,4 +254,7 @@ label {
     display: none;
     border-radius: 10px;
     box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+}
+#durationInput {
+    width: 58%;
 }
