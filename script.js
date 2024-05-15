@@ -327,6 +327,16 @@ cart.addEventListener('click', function() {
     }
 });
 
+// Add touch event listeners to the cart
+cart.addEventListener('touchstart', function(e) {
+    e.target.classList.add('active');
+}, false);
+
+cart.addEventListener('touchend', function(e) {
+    e.target.classList.remove('active');
+}, false);
+
+
 let cartItems = []; // Define your cart items as an array
 
 // Initialize the count of selected items
