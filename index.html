@@ -8,7 +8,7 @@
 </head>
 <body>
   <header>
-     <div class="logo-img-title-container">
+    <div class="logo-img-title-container">
       <div class="logo-container">
         <img src="https://lh3.googleusercontent.com/d/1pycErU1dgRNfZEFXBJToLkj5mVqSkFjb" class="logo1">
         <img src="https://lh3.googleusercontent.com/d/19bi1iNE8JYD1kVJ3nGH0YevbPh-sdQ9b" class="logo1">
@@ -20,6 +20,10 @@
       <label for="dateTimeStartInput">Start Date and Time</label>
       <input type="datetime-local" id="dateTimeStartInput">
       <input type="number" id="durationInput" placeholder="Duration">
+      <select id="durationType">
+        <option value="hours">Hours</option>
+        <option value="days">Days</option>
+      </select>      
       <label for="dateTimeEndInput">End Date and Time</label>
       <input type="datetime-local" id="dateTimeEndInput">
       <input type="text" id="referenceInput" placeholder="Reference">
@@ -27,44 +31,32 @@
     <div class="checkbox-group">
       <input type="checkbox" id="checkbox1">
       <label for="checkbox1">Checkbox 1</label>
-      <!-- Repeat for other checkboxes -->
     </div>
-
   </header>  
-  <div id="galleryContainer" class="rounded-container"></div>
-    <div id="searchAndFilterContainer">
-      <input type="text" id="myInput" onkeyup="liveSearch()" placeholder="Search...">
-      <div id="galleryContainer"></div>
-      <div id="csvGallery"></div>
-  </div>
-  
+  <div id="searchAndFilterContainer">
+    <input type="text" id="myInput" onkeyup="liveSearch()" placeholder="Search...">
     <div id="selectContainer"></div>
-    <div id="uniqueCode" style="display: none;"></div>
-    
-    <!-- Add the cart HTML here -->
-    <div id="cart" class="cart">
-      <div id="cartDiv" class="cart-div">
-        <button id="cartButton" class="cart-button">
-            <span class="cart-icon">🛒</span>
-            <span id="cartCount" class="cart-count">1</span>
-        </button>
+    <div id="galleryContainer"></div>
+    <div id="csvGallery"></div>
+  </div>
+  <div id="uniqueCode" style="display: none;"></div>
+  <div id="cart" class="cart">
+    <div id="cartDiv" class="cart-div">
+      <button id="cartButton" class="cart-button">
+        <span class="cart-icon">🛒</span>
+        <span id="cartCount" class="cart-count">1</span>
+      </button>
     </div>
-    
-        <div id="cartItems" class="cart-items">
-            <!-- Items will be added here dynamically -->
-        </div>
-    </div>
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script>
-$(document).ready(function(){
-  $("#cartButton").click(function(){
-    $(".cart").toggleClass("active");
-  });
-});
-</script>
-
-
+    <div id="cartItems" class="cart-items"></div>
+  </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script>
+    $(document).ready(function(){
+      $("#cartButton").click(function(){
+        $(".cart").toggleClass("active");
+      });
+    });
+  </script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.1.0/papaparse.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.13/jspdf.plugin.autotable.min.js"></script>
