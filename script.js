@@ -25,7 +25,7 @@ let subcategoryIndex; // Declare subcategoryIndex in an outer scope
 fetch('Resources.csv')
     .then(response => response.text())
     .then(csvData => {
-        items = csvData.split('\n').filter(row => row.trim().length > 0).map(row => row.split(','));
+        items = csvData.split('\n').filter(row => row.length > 0).map(row => row.split(','));
         headers = items[0];
         skuIndex = headers.indexOf('SKU');
         categoryIndex = headers.indexOf('Category'); // Get the index of the 'Category' column
