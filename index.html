@@ -15,16 +15,32 @@
       </div>
       <span class="logo-text">Simulation Program</span>
     </div>
-    <div class="input-details">
-      <input type="text" id="titleInput" placeholder="Session Title">
-      <label for="dateTimeStartInput">Start Date and Time</label>
-      <input type="datetime-local" id="dateTimeStartInput">
-      <input type="number" id="durationInput" placeholder="Duration">
-      <select id="durationType">
-        <option value="hours">Hours</option>
-        <option value="days">Days</option>
-      </select>      
-      <label for="dateTimeEndInput">End Date and Time</label>
+
+
+      <div class="input-details">
+        <input type="text" id="titleInput" placeholder="Session Title">
+        <label for="dateTimeStartInput">Start</label>
+        <input type="datetime-local" id="dateTimeStartInput">
+    
+        <div class="inner-input-details">
+          <div class="input-wrapper">
+              <label for="durationInput">Duration</label>
+              <input type="number" id="durationInput" placeholder="Duration">
+          </div>
+      
+          <div class="input-wrapper">
+              <label class="switch">
+                  <input type="checkbox" id="durationType">
+                  <span class="slider">
+                      <span class="switch-label hours">Hours</span>
+                      <span class="switch-label days">Days</span>
+                  </span>
+              </label>
+          </div>
+      </div>
+      
+
+      <label for="dateTimeEndInput">End</label>
       <input type="datetime-local" id="dateTimeEndInput">
       <input type="text" id="referenceInput" placeholder="Reference">
     </div>
@@ -46,7 +62,6 @@
         <img src="checkouticon.jfif" class="cart-icon">
         <span id="cartCount" class="cart-count">1</span>
       </button>
-   
     </div>
     <div id="cartItems" class="cart-items"></div>
   </div>
