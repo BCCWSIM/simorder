@@ -143,7 +143,7 @@ resetButton.addEventListener('click', function() {
     document.getElementById('subcategorySelect').value = 'All';
     displayGallery();
 });
-
+galleryContainer.insertBefore(resetButton, galleryContainer.firstChild);
 
 
 let timeout = null;
