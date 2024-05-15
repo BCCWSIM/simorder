@@ -8,14 +8,13 @@ body, html {
     justify-content: center;
     padding: 0.5em 1em;
     margin: 0.5em;
-    cursor: pointer;
     border: 1px solid #999999;
     border-radius: 5px;
     width: fit-content;
 }
 
 .bgimg {
-    background: url("https://lh3.googleusercontent.com/d/1VwfM71ruMmg1vgBlXYUSoCTc8NzXdzyl") no-repeat center center;
+    background: url("background.jpg") no-repeat center center;
     background-size: cover;
     min-height: 70%;
 }
@@ -186,14 +185,13 @@ label {
     display: none;
     z-index: 1000;
     background-color: #3496a0;
-    will-change: transform; /* Add this line */
 }
 
 .cart:hover,
 .cart:active {
     right: 0;
     height: 450px;
-    transition: all 0.5s ease; /* Add this line */
+    transition: all 0.5s ease;
 }
 
 .cart-items {
@@ -206,12 +204,12 @@ label {
     display: none;
     border-radius: 10px;
     box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
-    transition: height 0.5s ease-in-out; /* Add this line */
+    transition: height 0.5s ease-in-out;
 }
 
 .cart:hover .cart-items,
 .cart:active .cart-items {
-    display: block; /* or 'flex' if you're using a flex layout for the cart items */
+    display: block;
 }
 
 .cart.active {
@@ -227,9 +225,7 @@ label {
     border: none;
     position: relative;
     z-index: 1;
-    pointer-events: none; /* Add this line */
 }
-
 
 .cart-icon {
     font-size: 24px;
