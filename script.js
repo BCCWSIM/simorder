@@ -433,3 +433,14 @@ function addToCart(item) {
     cartItemsElement.appendChild(itemElement);
     cartCount.textContent = cartItemsElement.children.length;
 }
+
+document.getElementById('durationType').addEventListener('change', function() {
+    if (this.checked) {
+      // The checkbox is checked, handle accordingly
+      console.log('Switched to Days');
+    } else {
+      // The checkbox is not checked, handle accordingly
+      console.log('Switched to Hours');
+    }
+  });
+  
