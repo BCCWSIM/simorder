@@ -269,7 +269,7 @@ label {
 }
 
 .slider:before {
-    position: absolute;
+    position: unset;
     content: "";
     height: 26px;
     width: 26px;
@@ -281,7 +281,7 @@ label {
 }
 
 input:checked + .slider {
-    background-color: #2196F3;
+    background-color: white;
 }
 
 input:checked + .slider:before {
@@ -321,7 +321,9 @@ input:checked + .slider .switch-label.days {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-direction: column;
 }
+
 
 #durationInput {
     flex: 1;
@@ -334,10 +336,18 @@ input:checked + .slider .switch-label.days {
 
 .input-wrapper {
     display: flex;
-    flex-direction: row; /* This will arrange the label and the input or switch in a row */
+    flex-direction: row;
+    align-items: center; /* This will center the items vertically */
     box-sizing: border-box;
 }
 
+
 .input-wrapper > * {
     flex: 1; /* This will make the children of .input-wrapper share the space equally */
+}
+.inner-input-details {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row; /* Change this from column to row */
 }
